@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import random
-import sys
 from sympy.solvers import solve
 from sympy import Symbol
 
@@ -43,8 +42,8 @@ class Graph:
         plt.show()
 
 
-class Input(Math):
-    def __init__(self) -> None:
+class Method(Math):
+    def __init__(self):
         self.natural_prompt = "Sample size: "
         self.natural_prompt_error = "Please enter a natural number."
         self.process_prompt = "Probability or Num Process: p/n"
@@ -95,11 +94,6 @@ class Input(Math):
         sample = self.get_sample_size()
         return time, sample
 
-
-class Method(Input):
-    def __init__(self):
-        super().__init__()
-
     def print_results(self, time, samples_x, sample):
         self.wait_val_result_prompt = print(f"Time waited: {time}")
         self.probability_result_prompt = print(
@@ -125,10 +119,8 @@ class Method(Input):
 
 if __name__ == "__main__":
     while True:
-        process = Input().get_process()
-        if process == Input().prob_value:
+        process = Method().get_process()
+        if process == Method().prob_value:
             Method().probability_process()
-        elif process == Input().num_value:
+        elif process == Method().num_value:
             Method().num_process()
-        else:
-            continue
